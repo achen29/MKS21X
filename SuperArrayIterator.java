@@ -1,22 +1,27 @@
-import java.util.Iterator
-    public class SuperArrayIterator implements Iterator<String>{
-    int start,end;
-    public SuperArrayIterator(int start, int end){
-	this.start = start;
-	this.end = end;
+import java.util.*;
+public class SuperArrayIterator implements Iterator<String>{
+    private int i;
+    private SuperArray suparry;
+    public SuperArrayIterator(SuperArray theone){
+	i = 0;
+	suparry = theone;
     }
-    public integer next(){
+    public String next(){
 	if(hasNext()){
-	    start ++;
-	    return start;
-	}else{
+	    i++;
+	    return suparry[i-1];
+	}
+	else{
 	    throw new NoSuchElementException();
 	}
     }
-    public boolean hasnext(){
-	return start < end;
+     public boolean hasNext(){
+	return i+1 < suparry.size();
     }
+
     public void remove(){
 	throw new UnsupportedOperationException();
     }
 }
+	    
+	
