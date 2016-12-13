@@ -14,21 +14,23 @@ public class Barcode implements Comparable<Barcode>{
 	    throw new IllegalArgumentException("must be 5 digits");
 	}
 	_zip = zip;
+	_checkDigit = checkSum() % 10;
     }
+    
+    private int checkSum(){
+	int chksm = 0;
+	for (int i = 0; i < 5; i ++){
+	    chksm = Integer.parseInt(_zip.charAt(i)+ "") + chksm;
+	}
+	return chksm;
+    }
+    
     public int compareTo(Barcode other){
-	if (Integer.parseInt(Barcode.toZip(_zip)) - Integer.parseInt(Barcode.toZip(other._zip)) < 0){
-	    return - 1;
-	}
-	else if (Integer.parseInt(Barcode.toZip(_zip)) - Integer.parseInt(Barcode.toZip(other._zip)) > 0){
-	    return 1;
-	}
-	else{
-	    return 0;
-	}
+	return _zip.compareTo(other._zip);
     }
     public static String toCode(String zip){
 	String str = "|";
-	for ( int i= 0; i < 5; i ++){
+	for ( int i= 0; i < zip.length(); i ++){
 	    str = str + bars[Integer.parseInt(zip.substring(i, i + 1))];
 	}
 	str = str + "|";
@@ -36,7 +38,7 @@ public class Barcode implements Comparable<Barcode>{
     }
     
     public String toString(){
-	String Str = _zip + Barcode.toCode(_zip);
+	String Str = _zip + _checkDigit + Barcode.toCode(_zip + _checkDigit);
 	return Str;
     }
     
