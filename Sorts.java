@@ -20,12 +20,13 @@ public class Sorts{
 	for(int first = 0; first < data.length; first++){
 	    int temp = data[first];
 	    int towhere = first;
-	    for(int comparing = first; comparing > 0; comparing --){
-		if(temp < data[comparing]){
-		    data[comparing + 1] = data[comparing];
-		    towhere=comparing;
-		} 
+	    for(int end = first; end > 0; end --){
+		if(temp < data[end]){
+		    data[end + 1] = data[end];
+		    towhere=end;
+		}
 	    }
+	    data[towhere] = temp;
 	}
     }
 }
