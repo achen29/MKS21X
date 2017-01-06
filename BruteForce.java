@@ -1,20 +1,12 @@
 public class BruteForce{
     private ArrayList<Routes> permutations = new ArrayList<Routes>();
-    public class (ArrayList<Cities> a ){
+    public class(ArrayList<cities> a){
     }
-    public void PermSolver(ArrayList<Cities> a){
-	ArrayList<Cities> b = ArrayList<Cities> a;
-	/** Ex. {C1, C2, C3, C4}
-	    Max : 3 2 1 0|
-	          0 0 0 0| C1 C2 C3 C4
-		  0 0 1 0| C1 C2 C4 C3
-		  0 1 0 0| C1 C3 C2 C4
-		  0 1 1 0| C1 C3 C4 C2
-		  0 2 0 0| C1 C4 C2 C3
-		  0 2 1 0| C1 C4 C3 C2
-		  ....
-		  ....
-		  ....
-		  ....
-	
+    public void PermSolver(ArrayList<Cities> a, int b){
+	ArrayList<Cities> combolist = a;
+	int[]matrix = new int[a.length];
+	for (int i = 2; i < combolist.length(); i ++){
+	    matrix[matrix.length() - i] = b % i; 
+	    b = b - (b % i);
     }
+}
